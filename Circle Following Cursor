@@ -1,0 +1,26 @@
+import React, { useState } from 'react'
+
+const App = () => {
+
+  const [pos, setpos]= useState({X: 0, Y:0});
+
+  const handleMouse= (e)=>{
+
+    setpos({X : e.clientX, Y: e.clientY});
+  }
+  return (
+    <div className='container' onMouseMove={handleMouse} style={{ height:'100vh', width: '100vw', display:'flex'}}>
+      <div className="circle" style={{
+        top:pos.Y,
+        left:pos.X,
+        position:'absolute',
+        height:'40px',
+        width:'40px',
+        backgroundColor:'red',
+        borderRadius:'50%'
+      }}></div>
+    </div>
+  )
+}
+
+export default App
