@@ -1,0 +1,48 @@
+import React, { useEffect, useRef, useState } from "react";
+
+function App() {
+
+  const [time, settime]= useState(0);
+  const [running, setrunning]= useState(false);
+
+  const interval=useRef(null);
+
+  useEffect(()=> {
+    if(running){
+
+      interval.current=setInterval(()=>{
+         settime(prev => prev+10);
+      }, 10);
+    }else{
+      clearInterval(interval.current)
+    }
+
+    return ()=> clearInterval(interval.current)
+
+  }, [running]);
+
+  const minute=Math.floor(time/60000);
+  const second=Math.floor((time%60000)/1000);
+  const milisecond=Math.floor((time%1000)/10);
+  
+  
+
+  return (
+    <div style={{ display: "flex", alignItems: "center", gap: "1rem", justifyContent: "center", marginTop: "2rem" }}>
+      <h1>{minute} : {second} : {milisecond}</h1>
+
+      <div>
+        <button onClick={() => setrunning(true)}>Start</button>
+        <button onClick={()=> setrunning(false)}>Stop</button>
+        <button onClick={()=> {
+          setrunning(false);
+          settime(0);
+        }}>Reset</button>
+
+      </div>
+    </div>
+  );
+}
+
+export default App;
+
