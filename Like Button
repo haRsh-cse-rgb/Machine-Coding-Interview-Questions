@@ -1,0 +1,36 @@
+import React, { useEffect, useRef, useState } from "react";
+
+function App() {
+
+  
+  const [liked, setliked]=useState(false);
+  const [heart, setheart]=useState('♡');
+  const handleClick=()=>{
+
+    if(liked){
+      setliked(false);
+      setheart('♡')
+
+    }
+    else{
+      setliked(true);
+      setheart('❤️')
+    }
+  }
+  
+  
+
+  return (
+    <div style={{display:'flex', alignItems:'center', justifyContent:'center', margin:'50px'}}>
+      <button style={{
+    background: "none",
+    border: "none",
+    fontSize: "3rem",
+    cursor: "pointer"
+  }}onClick={handleClick}>{heart}</button>
+    </div>
+  );
+}
+
+export default App;
+
