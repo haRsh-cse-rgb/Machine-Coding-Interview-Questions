@@ -1,0 +1,37 @@
+import React, {useState } from "react";
+
+const Accordion =({title, description}) =>{
+
+  const [open, setopen]=useState(false);
+
+  
+  
+  return (
+
+    <div style={{ border:'1px solid black', borderRadius:'3px', margin:'10px 0', background:'#f1f1f1', padding:'5px'}}>
+      <div onClick={()=> setopen(!open)} style={{cursor:'pointer', background: '#f1f1f1', fontWeight:'bold'}}>
+      {title}
+      
+
+      </div>
+      {open && (<div style={{background:'#fff', padding:'5px'}}>{description}</div>)}
+    </div>
+    
+  )
+}
+
+function App() {
+
+
+  return (
+    <div style={{ maxWidth: '400px', margin: 'auto' }}>
+      <h2>FAQ</h2>
+      <Accordion title="What is React?" description="React is a JavaScript library for building UIs." />
+      <Accordion title="What is a Hook?" description="Hooks let you use state and lifecycle features in functional components." />
+      <Accordion title="How do I install React?" description="Use create-react-app or Vite to scaffold a project quickly." />
+    </div>
+  );
+}
+
+export default App;
+
